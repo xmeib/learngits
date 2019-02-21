@@ -1,0 +1,303 @@
+1、基本网站开发能力：
+	服务端
+	前端
+	运维部署
+项目：多人社区（类似：https://cnodejs.org/）
+
+2、Node是什么？服务端js
+
+3、技术性网站都是org、io结尾域名。org（组织的意思）、io(input、output)
+
+4、Node.js是一个javascript运行时环境。
+简单来讲就是Node.js可以解析和执行javascript代码。
+以前只有浏览器可以解析和执行javascript代码。
+
+5、node.js可以让JavaScript脱离浏览器运行，就是一个平台。
+
+
+
+2.11
+1、node.js中的javascript
+没有DOM和BOM，只有EcmaScript
+Node这个JavaScript执行环境中为JavaScript提供了一些服务器级别的操作：
+	例如文件读写
+	网络服务构架
+	网络通信
+
+2、代码只是特点格式的字符串，浏览器引擎认识他。
+Node.js的作者把Google Chrome 中的 V8 引擎移植了出来，开发了一个独立的JavaScript运行时环境。
+
+2.12
+1、B/S编程模型（浏览器-客户端）
+node只是作为我们学习BS编程模型的一个工具
+
+2、学习Node会学到什么
+模块化编程
+RequireJS；
+@import("文件路径")；
+Node中可以像@import（）一样来引用js文件
+EcmaScript6
+Express Web 开发框架
+学习Node不仅会帮助大家打开服务器黑盒子，同时能帮助你学习前端的高级内容（Vue.js、React、Angular）
+
+3、没有dom和bom。浏览器不能执行node文件，node不能操作dom、bom
+
+4、操作文件
+//读取文件
+	//1、使用require 方法加载fs核心模块
+	var fs = require("fs");
+	//2、读取文件
+	//第一个参数读取文件路径  第二个参数是一个回调函数
+	//                          error(如果读取失败，error就是错误对象，如果读取成功，error就是null)
+	//                          data(如果读取成功，data就是读取到的数据，error就是错误对象)
+
+	fs.readFile("./hello.txt", function (error, data) {
+	    //<Buffer 68 65 6c 6c 6f 20 6e 6f 64 65 2e 6a 73>
+	    //16进制文件
+	    //选择一个友好的处理方式
+	    if (error) {
+	        console.log("文件读取失败");
+	    } else {
+	        console.log(data.toString());
+	    }
+	});
+
+
+
+//写文件
+	var fs=require("fs");
+	//1、第一个参数：文件路径
+	//2、第二个参数：文件内容
+	//3、第三个参数：回调函数
+	fs.writeFile("./你好.txt","大家好，我是node.js",function (error) {
+	    if (error){
+	        console.log("写入失败");
+	    }else {
+	        console.log("写入成功");
+	    }
+	});
+
+
+5、简单服务器
+
+6、根据不同的路径访问响应不同的结果（初级：根据resquest.url 不同来响应不同的结果）
+
+7、复习：node：既不是语言，也不是框架，它是一个平台。（JavaScript运行时）
+
+8、（1）JSON 通常用于与服务端交换数据。在向服务器发送数据时一般是字符串。JSON.stringify()将 JavaScript 对象转化为字符串。
+JSON.stringify(value[, replacer[, space]])
+参数：
+	value:
+	必需， 要转换的 JavaScript 值（通常为对象或数组）。
+	
+	replacer:
+	可选。用于转换结果的函数或数组。
+	如果 replacer 为函数，则 JSON.stringify 将调用该函数，并传入每个成员的键和值。使用返回值而不是原始值。如果此函数返回 undefined，则排除成员。根对象的键是一个空字符串：""。
+	如果 replacer 是一个数组，则仅转换该数组中具有键值的成员。成员的转换顺序与键在数组中的顺序一样。当 value 参数也为数组时，将忽略 replacer 数组。
+	
+	space:
+	可选，文本添加缩进、空格和换行符，如果 space 是一个数字，则返回值文本在每个级别缩进指定数目的空格，如果 space 大于 10，则文本缩进 10 个空格。space 也可以使用非数字，如：\t。
+
+（2）JSON.parse()，JSON 通常用于与服务端交换数据。在接收服务器数据时一般是字符串。我们可以使用 JSON.parse() 方法将数据转换为 JavaScript 对象。
+	JSON.parse(text[, reviver])
+	text:必需， 一个有效的 JSON 字符串。
+	reviver: 可选，一个转换结果的函数， 将为对象的每个成员调用此函数。
+
+
+9、node:
+核心模块：node为JavaScript提供了很多服务器级别的API1,这些API绝大多数都被包装到一个名为核心模块中了，例如文件操作的fs核心模块，http服务构建的http模块，path路径操作模块、os操作系统信息模块。。。。
+
+10、
+var os=require("os"); 操作机器信息
+var path=require("path");用来操作路径的
+
+11、require 加载执行文件代码。
+
+
+
+
+
+2.13
+1、在node中没有全局作用域，只有文件作用域。外部访问不到外部，内部访问不到内部。
+
+2、require引用外部文件时，可以省略后缀，相对路径“./”不能省略，否则报错。
+
+3、每个文件模块中都提供了一个对象：exports exports默认是一个空对象，你要做的就是把所有需要被外部访问的成员挂载到这个对象上。
+
+4、服务器就是一个普通的电脑，24小时不关机的电脑。
+
+5、IP用来定位计算机，端口号用来定位具体的应用程序。（所有需要联网的软件都必须具有端口号）。
+
+6、中文乱码问题
+在服务器端默认发送的数据，其实是utf8编码的内容，但是浏览器不知道你是utf8编码的内容，浏览器在不知道服务器响应内容的编码的情况下会按照当前操作系统的默认编码去解析（中文为GBK，所以页面上看到的是乱码）。解决办法就是告诉浏览器发送数据的编码。
+设置响应头res.setHeader("Content-Type","text/plain;charset=utf-8");
+res.setHeader("Content-Type","text/html;charset=utf-8");等。
+
+7、不同类型Content-Type设置。
+
+8、res.end();支持两种数据类型，一种是二进制，一种是字符串。
+
+9、不同的资源对应的content-type不同，图片不需要编码，一般只为字符数据才指定编码。
+
+
+
+2.14
+第二天：
+1、代码分格
+JavaScript Standard Style（代码规范）
+js代码中可以不写分号（但有的不行（当一行代码是以：[ 、（ 、反引号	开头就需要在前边加分号
+））；
+
+2、·· 反引号是ES6中新增一种字符串包裹方式，叫做：模板字符串
+它支持换行和非常方便的拼接变量（按原格式输出）。
+
+
+2.15
+1、初步实现Apache功能
+
+2、let关键字定义局部使用变量。{let x=10},表示let只能在{}内使用，外部不能使用，let不能先声明再使用（没有预解析）；
+const关键字于let相似，块级作用域，声明必须进行初始化，而且初始化后值不可再修改。
+
+3、除了Content-Type可以用来指定编码，也可以在html页面中meta 元数据来声明当前文档编码
+
+4、初步实现
+先把index.html设置为默认访问，然后拿到用户输入url路径，判断此文件是否拥有，拥有就输出data,没有就输出404；
+
+5、实现目录版的Apache，1、如何得到wwwDir目录列表中的文件名和目录名（fs.readdir）;
+					 2、如何将得到的文件名和目录名替换到template.html中（模板引擎）
+					 	2.1 在template.html中需要替换的位置预留一个特殊的标记。
+					 	2.2 根据files生成需要的HTML内容。
+
+
+6.ES6 中的反引号字符串中，可以使用${}用来引用变量
+
+7、在node中使用模板引擎
+art-template  安装：npm install art-template
+在浏览器中需要引用 lib/template-web.js文件
+强调：模板引擎不关心你的字符串内容，只关心自己能认识的模板标记语法。例如{{}} 语法被称之为mustache语法，八字胡语法。
+
+
+
+2.16
+在node中使用 art-template 模板引擎
+模板引擎最早就是诞生于服务器领域，后来才发展到了前端。
+使用：
+	1、安装
+	2、在需要使用的文件模块中加载art-template 
+	 使用require("art-template") 你install什么就require()什么。
+	3、查文档，使用模板引擎的API
+
+
+
+2.17
+1、template使用
+
+2、render()方法。template.render("hello {{ name }}",{
+	name:"jack";
+})
+template.render(source,data(object));
+source是字符串格式。
+
+3、模板引擎不关心你的内容，只关心{{}}格式。只关心它认识的标记。
+
+
+
+2.18：
+1、break 可以用在循环或者switch；continue只能用在循环中。	
+
+2、编写可维护的JavaScript
+
+
+2.19
+1、客户端渲染数据和服务端渲染数据。
+
+2、客户端渲染数据，需要请求两次，第一次是页面，客户端收到页面后，从上到下解析代码，发现了AJAX请求，则再次发送请求，然后拿到ajax响应结果，最后使用模引擎渲染页面。
+（尽早就可以看到页面）
+
+3、服务端渲染，只发送一次请求，页面直接在服务端渲染好后发送给客户端。（服务端压力变大）。
+
+4、怎么看一个网页是客户端渲染还是服务端渲染。（查看网页源代码能看到数据，那么就是服务端渲染过来的）。
+
+5、（AJAX）异步渲染，不利于SEO，搜索引擎优化。
+	服务端渲染是可以被爬虫抓取到的。
+
+6、真正的网站既不是纯异步也不是纯服务端渲染出来的，而是两者结合来做的，例如京东的商品列表就是服务端渲染，目的是为了SEO搜索引擎优化，而商品评论考虑用户体验，而且不需要SEO优化，所以采用客户端渲染（只要考虑SEO，最好用服务端渲染）。
+
+7、处理网站中的静态资源。
+把网站中的静态资源（网页、css资源等）不要和服务端文件放在一起。
+所以把html文件放在viesw（视图）目录中，把其他静态文件放在public(公共)目录中。
+
+
+8、浏览器收到HTML响应内容之后，就要开始从上到下依次解析，当在解析过程中，如果发现：link、script、img、iframe、video、audio等具有src或者href(link)属性的时候（a是用户点击后才会执行），浏览器会自动对这些资源发起请求，
+
+
+
+2.20
+1、以前表单时如何提交的？
+表单中需要提交的表单控件元素必须有name属性。
+表单提交分为两种，1、默认的提交方式；2、表单异步提交
+action 就是表单提交的地址，说白了就是请求的 url 地址
+        method 请求方法
+            get  数据放在url地址中
+            post 数据放在请求体中
+
+2、url API 把URL拆成几部分。
+> url.parse("http://127.0.0.1:3000/pinglun?name=sadas&message=asdasda")
+Url {
+  protocol: 'http:',
+  slashes: true,
+  auth: null,
+  host: '127.0.0.1:3000',
+  port: '3000',
+  hostname: '127.0.0.1',
+  hash: null,
+  search: '?name=sadas&message=asdasda',
+  query: 'name=sadas&message=asdasda',
+  pathname: '/pinglun',
+  path: '/pinglun?name=sadas&message=asdasda',
+  href: 'http://127.0.0.1:3000/pinglun?name=sadas&message=asdasda' }
+>
+
+3、url.parse("url地址"，true);第二个参数为true可以将“？”后面的参数解析为对象。
+
+4、  1、获取表单提交的数据 parseObj.query
+	2、生成日期到数据对象中，然后存储到数组中
+	3、让用户跳到首页
+	4、当用户重新请求“/”时，数组数据已发生变化，所以用户看到的页面也就变了
+
+5、表单提交重定向
+
+
+6、一次请求对应一次响应，响应结束这次请求也就结束了。
+
+7、只要服务器看见状态码为302，就会去响应头中通过Location告诉客户端往哪儿重定向。
+
+8、如何通过服务器让客户端重定向？
+   1. 状态码设置为 302 临时重定向
+       statusCode
+   2. 在响应头中通过 Location 告诉客户端往哪儿重定向
+       setHeader
+如果客户端发现收到服务器的响应的状态码是 302 就会自动去响应头中找 Location ，然后对该地址发起新的请求
+所以你就能看到客户端自动跳转了
+
+
+第三天：
+1、模块系统、Express(第三方 web 开发框架)；
+使用框架的目的就是让我们更加专注业务，而不是底层细节。
+
+2、node环境直接控制台node回车，退出按两次Ctrl+C;
+
+3、 软件版本 1（新增功能比较多）.1（加入新功能）.1（修复bug，提升性能）
+一般是客户端软件，做网站很少涉及到版本概念。
+
+4、Array prototype
+
+5、jQuery 不是专门用来遍历 jQuery 元素的
+  1. 方便的遍历 jQuery 元素
+  2. 可以在不兼容 forEach 的低版本浏览器中使用 jQuery 的 each 方法
+
+6、正则/g 查全部。
+
+str.split（""） 将字符串转换为数组，默认为 ，分割
+arr.join("");将数组所有元素转换为一个字符串，默认为,连接，array.join(separator)
+separator可选。指定要使用的分隔符。如果省略该参数，则使用逗号作为分隔符。
